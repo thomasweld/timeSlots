@@ -22,7 +22,24 @@
   font-size: large;
 }
 
+ul {
+  list-style-type: none;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+ul > li {
+  min-height: 40px;
+  margin: 8px auto;
+  line-height: 40px;
+  cursor: pointer;
+}
+
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
