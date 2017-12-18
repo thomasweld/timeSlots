@@ -30,6 +30,7 @@ class List extends React.Component {
           <h4>Sign Up for {this.props.activeTimeSlot.hour}</h4>
           <TimeSlotForm
             onSubmit={this.props.handleSubmit}
+            handleCancel={this.props.handleCancel}
             initialValues={{
               name: `${this.props.activeTimeSlot.name}`,
               phoneNumber: `${this.props.activeTimeSlot.phoneNumber}`,
@@ -58,7 +59,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onClickTimeSlot: listActions.launchPopUp,
-  handleSubmit: listActions.handleSubmit
+  handleSubmit: listActions.handleSubmit,
+  handleCancel: listActions.handleCancel
 });
 
 List.propTypes = {

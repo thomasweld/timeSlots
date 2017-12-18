@@ -2,6 +2,7 @@
 const LAUNCH_POP_UP = 'LAUNCH_POP_UP';
 const CLOSE_POP_UP = 'CLOSE_POP_UP';
 const SIGN_UP = 'SIGN_UP';
+const CANCEL = 'CANCEL';
 
 // Reducer
 export default function reducer(state = initialState, action = {}) {
@@ -26,6 +27,11 @@ export default function reducer(state = initialState, action = {}) {
           timeSlots: action.timeSlots
         }
       };
+    case CANCEL:
+      return {
+        ...state,
+        showModal: false
+      };
     default:
       return state;
   }
@@ -34,21 +40,25 @@ export default function reducer(state = initialState, action = {}) {
 // Action Creators
 export const launchPopUp = timeSlot => ({ type: LAUNCH_POP_UP, timeSlot });
 export const closePopUp = timeSlot => ({ type: CLOSE_POP_UP, timeSlot });
+export const handleCancel = () => ({ type: CANCEL });
 
 // side effect
 export const handleSubmit = formData => (dispatch, getState) => {
   const state = getState();
-  console.log(formData);
   let timeSlots = state.List.timeSlots;
   state.List.timeSlots.forEach((slot, index) => {
     if (formData.hour === slot.hour) {
-      slot.name = formData.name;
-      slot.phoneNumber = formData.phoneNumber;
-      slot.available = false;
-      timeSlots[index] = slot;
+      if (formData.name && formData.phoneNumber) {
+        slot.name = formData.name;
+        slot.phoneNumber = formData.phoneNumber;
+        slot.available = false;
+        timeSlots[index] = slot;
+      } else {
+        slot.available = true;
+        timeSlots[index] = slot;
+      }
     }
   });
-  console.log();
 
   dispatch({ type: SIGN_UP, timeSlots });
 };

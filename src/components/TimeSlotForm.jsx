@@ -3,40 +3,54 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
 const TimeSlotForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props;
+  const { handleSubmit, handleCancel, pristine, reset, submitting } = props;
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name</label>
+    <div>
+      <form onSubmit={handleSubmit}>
         <div>
-          <Field name="name" component="input" type="text" placeholder="Name" />
+          <label>Name</label>
+          <div>
+            <Field
+              name="name"
+              component="input"
+              type="text"
+              placeholder="Name"
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        <label>Phone Number</label>
         <div>
-          <Field
-            name="phoneNumber"
-            component="input"
-            type="tel"
-            placeholder="Phone Number"
-          />
+          <label>Phone Number</label>
+          <div>
+            <Field
+              name="phoneNumber"
+              component="input"
+              type="tel"
+              placeholder="Phone Number"
+            />
+          </div>
         </div>
-      </div>
 
-      <div id="hiddenInput">
-        <Field name="hour" component="input" type="text" />
-      </div>
+        <div id="hiddenInput">
+          <Field name="hour" component="input" type="text" />
+        </div>
 
+        <div>
+          <button type="submit" disabled={pristine || submitting}>
+            Submit
+          </button>
+          <button
+            type="button"
+            disabled={pristine || submitting}
+            onClick={reset}
+          >
+            Clear Values
+          </button>
+        </div>
+      </form>
       <div>
-        <button type="submit" disabled={pristine || submitting}>
-          Submit
-        </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-          Clear Values
-        </button>
+        <button onClick={handleCancel}>Cancel</button>
       </div>
-    </form>
+    </div>
   );
 };
 
