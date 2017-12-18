@@ -18,11 +18,16 @@ const TimeSlotForm = props => {
           <Field
             name="phoneNumber"
             component="input"
-            type="phoneNumber"
+            type="tel"
             placeholder="Phone Number"
           />
         </div>
       </div>
+
+      <div id="hiddenInput">
+        <Field name="hour" component="input" type="text" />
+      </div>
+
       <div>
         <button type="submit" disabled={pristine || submitting}>
           Submit

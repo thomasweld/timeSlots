@@ -20,8 +20,11 @@ export default function reducer(state = initialState, action = {}) {
       };
     case SIGN_UP:
       return {
-        ...state
-        // timeSlot: false
+        ...state,
+        showModal: false,
+        List: {
+          timeSlots: action.timeSlots
+        }
       };
     default:
       return state;
@@ -31,15 +34,24 @@ export default function reducer(state = initialState, action = {}) {
 // Action Creators
 export const launchPopUp = timeSlot => ({ type: LAUNCH_POP_UP, timeSlot });
 export const closePopUp = timeSlot => ({ type: CLOSE_POP_UP, timeSlot });
-export const handleSubmit = formData => ({ type: SIGN_UP, formData });
 
-// form submit
-// export const handleSubmit = formData => (dispatch, getState) => {
-//   let state = getState();
-//   console.log(state);
-//   console.log(formData);
-//   signUp(formData);
-// };
+// side effect
+export const handleSubmit = formData => (dispatch, getState) => {
+  const state = getState();
+  console.log(formData);
+  let timeSlots = state.List.timeSlots;
+  state.List.timeSlots.forEach((slot, index) => {
+    if (formData.hour === slot.hour) {
+      slot.name = formData.name;
+      slot.phoneNumber = formData.phoneNumber;
+      slot.available = false;
+      timeSlots[index] = slot;
+    }
+  });
+  console.log();
+
+  dispatch({ type: SIGN_UP, timeSlots });
+};
 
 const initialState = {
   showModal: false,

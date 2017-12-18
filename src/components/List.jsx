@@ -18,20 +18,25 @@ class List extends React.Component {
           }}
         >
           {timeSlot.hour}
-          {!timeSlot.available && ` - Booked by ${timeSlot.name}`}
+          {!timeSlot.available &&
+            ` - Booked by ${timeSlot.name} - ${timeSlot.phoneNumber}`}
         </li>
       ));
     }
 
     if (this.props.showModal && this.props.activeTimeSlot) {
       showModal = (
-        <TimeSlotForm
-          onSubmit={this.props.handleSubmit}
-          initialValues={{
-            name: `${this.props.activeTimeSlot.name}`,
-            phoneNumber: `${this.props.activeTimeSlot.phoneNumber}`
-          }}
-        />
+        <div>
+          <h4>Sign Up for {this.props.activeTimeSlot.hour}</h4>
+          <TimeSlotForm
+            onSubmit={this.props.handleSubmit}
+            initialValues={{
+              name: `${this.props.activeTimeSlot.name}`,
+              phoneNumber: `${this.props.activeTimeSlot.phoneNumber}`,
+              hour: `${this.props.activeTimeSlot.hour}`
+            }}
+          />
+        </div>
       );
     }
 
@@ -39,7 +44,7 @@ class List extends React.Component {
       <div>
         <h1>Time Slots</h1>
         <div>{showModal}</div>
-        <ul>{showList}</ul>
+        <ul>{!showModal && showList}</ul>
       </div>
     );
   }
