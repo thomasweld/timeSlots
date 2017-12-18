@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import * as listActions from '../ducks/listDuck';
+import TimeSlotForm from './TimeSlotForm';
 
 class List extends React.Component {
   render() {
-    let showList;
+    let showList, showModal;
     if (this.props.timeSlots) {
-      showList = this.props.timeSlots.map(timeSlot => (
+      showList = this.props.timeSlots.map((timeSlot, index) => (
         <li
-          onClick={this.props.onClickTimeSlot}
+          key={index}
+          onClick={() => this.props.onClickTimeSlot(timeSlot)}
           style={{
-            backgroundColor: timeSlot.available ? 'red' : 'none'
+            backgroundColor: timeSlot.available ? 'lightgreen' : 'red'
           }}
         >
           {timeSlot.hour}
@@ -20,9 +22,23 @@ class List extends React.Component {
         </li>
       ));
     }
+
+    if (this.props.showModal && this.props.activeTimeSlot) {
+      showModal = (
+        <TimeSlotForm
+          onSubmit={this.props.handleSubmit}
+          initialValues={{
+            name: `${this.props.activeTimeSlot.name}`,
+            phoneNumber: `${this.props.activeTimeSlot.phoneNumber}`
+          }}
+        />
+      );
+    }
+
     return (
       <div>
         <h1>Time Slots</h1>
+        <div>{showModal}</div>
         <ul>{showList}</ul>
       </div>
     );
@@ -30,11 +46,14 @@ class List extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  timeSlots: state.listReducer.timeSlots
+  timeSlots: state.List.timeSlots,
+  showModal: state.List.showModal,
+  activeTimeSlot: state.List.activeTimeSlot
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClickTimeSlot: listActions.launchPopUp
+  onClickTimeSlot: listActions.launchPopUp,
+  handleSubmit: listActions.handleSubmit
 });
 
 List.propTypes = {

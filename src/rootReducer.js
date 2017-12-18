@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-// import { reducer as formReducer } from 'redux-form';
-import listReducer from './ducks/listDuck';
+import { reducer as formReducer } from 'redux-form';
+import List from './ducks/listDuck';
 
 const rootReducer = combineReducers({
-  listReducer
-  // form: formReducer
+  List,
+  form: formReducer
 });
 
 export default rootReducer;
