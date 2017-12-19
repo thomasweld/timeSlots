@@ -11,55 +11,49 @@ const initialState = {
   },
   timeSlots: [
     {
-      hour: '9am',
+      hour: '9am-10am',
       available: true,
       name: '',
       phoneNumber: ''
     },
     {
-      hour: '10am',
+      hour: '10am-11am',
       available: true,
       name: '',
       phoneNumber: ''
     },
     {
-      hour: '11am',
+      hour: '11am-12pm',
       available: true,
       name: '',
       phoneNumber: ''
     },
     {
-      hour: '12pm',
+      hour: '12pm-1pm',
       available: true,
       name: '',
       phoneNumber: ''
     },
     {
-      hour: '1pm',
+      hour: '1pm-2pm',
       available: true,
       name: '',
       phoneNumber: ''
     },
     {
-      hour: '2pm',
+      hour: '2pm-3pm',
       available: true,
       name: '',
       phoneNumber: ''
     },
     {
-      hour: '3pm',
+      hour: '3pm-4pm',
       available: true,
       name: '',
       phoneNumber: ''
     },
     {
-      hour: '4pm',
-      available: true,
-      name: '',
-      phoneNumber: ''
-    },
-    {
-      hour: '5pm',
+      hour: '4pm-5pm',
       available: true,
       name: '',
       phoneNumber: ''
