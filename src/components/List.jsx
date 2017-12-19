@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as listActions from '../ducks/listDuck';
 import TimeSlotForm from './TimeSlotForm';
 
-class List extends React.Component {
+export class List extends React.Component {
   render() {
     let showList, showModal;
     if (this.props.timeSlots) {

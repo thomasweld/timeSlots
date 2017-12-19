@@ -44,6 +44,7 @@ export const handleCancel = () => ({ type: CANCEL });
 
 // side effect
 export const handleSubmit = formData => (dispatch, getState) => {
+  console.log(formData);
   const state = getState();
   let timeSlots = state.List.timeSlots;
   state.List.timeSlots.forEach((slot, index) => {

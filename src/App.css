@@ -26,6 +26,7 @@ ul {
   list-style-type: none;
   max-width: 400px;
   margin: 0 auto;
+  padding-right: 40px;
 }
 
 ul > li {
@@ -37,6 +38,13 @@ ul > li {
 
 #hiddenInput {
   display: none;
+}
+
+.timeSlotForm {
+  border: 1px solid #ec4250;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px 0px;
 }
 
 @keyframes App-logo-spin {

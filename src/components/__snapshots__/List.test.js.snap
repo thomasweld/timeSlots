@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List should match snapshot 1`] = `
+<div>
+  <h1>
+    Time Slots
+  </h1>
+  <div />
+  <ul>
+    <li
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "lightgreen",
+        }
+      }
+    >
+      9am
+    </li>
+    <li
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "lightgreen",
+        }
+      }
+    >
+      10am
+    </li>
+    <li
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "lightgreen",
+        }
+      }
+    >
+      11am
+    </li>
+    <li
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "lightgreen",
+        }
+      }
+    >
+      12pm
+    </li>
+    <li
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "lightgreen",
+        }
+      }
+    >
+      1pm
+    </li>
+    <li
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "lightgreen",
+        }
+      }
+    >
+      2pm
+    </li>
+    <li
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "lightgreen",
+        }
+      }
+    >
+      3pm
+    </li>
+    <li
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "lightgreen",
+        }
+      }
+    >
+      4pm
+    </li>
+    <li
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "lightgreen",
+        }
+      }
+    >
+      5pm
+    </li>
+  </ul>
+</div>
+`;

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
 const TimeSlotForm = props => {
-  const { handleSubmit, handleCancel, pristine, reset, submitting } = props;
+  const { handleSubmit, handleCancel, pristine, submitting } = props;
   return (
-    <div>
+    <div className="timeSlotForm">
       <form onSubmit={handleSubmit}>
         <div>
           <label>Name</label>
@@ -18,6 +18,7 @@ const TimeSlotForm = props => {
             />
           </div>
         </div>
+        <br />
         <div>
           <label>Phone Number</label>
           <div>
@@ -33,23 +34,16 @@ const TimeSlotForm = props => {
         <div id="hiddenInput">
           <Field name="hour" component="input" type="text" />
         </div>
-
+        <br />
         <div>
           <button type="submit" disabled={pristine || submitting}>
             Submit
           </button>
-          <button
-            type="button"
-            disabled={pristine || submitting}
-            onClick={reset}
-          >
-            Clear Values
+          <button type="button" onClick={handleCancel}>
+            Cancel
           </button>
         </div>
       </form>
-      <div>
-        <button onClick={handleCancel}>Cancel</button>
-      </div>
     </div>
   );
 };
